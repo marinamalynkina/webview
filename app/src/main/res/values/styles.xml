@@ -1,0 +1,65 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <item name="textInputStyle">@style/Widget.AppTheme.TextInputLayout.OnBackground</item>
+
+    </style>
+
+    <style name="Widget.AppTheme.TextInputLayout.OnBackground" parent="Widget.AppTheme.TextInputLayout">
+        <!--        <item name="android:paddingStart">8dp</item>-->
+        <!--        <item name="android:paddingEnd">8dp</item>-->
+        <item name="android:textColorHint">?colorOnBackground</item>
+        <item name="helperTextTextColor">?colorOnBackground</item>
+        <item name="boxStrokeColor">#4D000000</item>
+        <item name="boxBackgroundColor">#FFFFFF</item>
+        <item name="boxStrokeWidth">0.5dp</item>
+
+    </style>
+
+    <style name="Widget.AppTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="android:hint">@string/empty_string</item>
+        <item name="hintEnabled">true</item>
+        <item name="hintTextAppearance">@style/TextAppearance.AppTheme.TextInputLayout.Hint</item>
+        <item name="helperTextTextAppearance">@style/TextAppearance.AppTheme.TextInputLayout.HelperText</item>
+        <item name="errorTextAppearance">@style/TextAppearance.AppTheme.TextInputLayout.Error</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.TextInputLayout.Hint" parent="TextAppearance.Design.Hint">
+        <item name="android:textColor">@color/colorTextOnBackground</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingLeft">2dp</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.TextInputLayout.Error" parent="TextAppearance.Design.Error">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/color_error</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.TextInputLayout.HelperText" parent="TextAppearance.Design.HelperText">
+        <item name="android:textColor">@color/colorTextLightOnBackground</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Widget.AppTheme.ActionBar.TextView" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/abc_action_bar_default_height_material</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+</resources>

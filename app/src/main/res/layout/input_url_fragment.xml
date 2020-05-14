@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorPrimary"
+        android:elevation="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:gravity="center"
+        android:text="@string/app_name"
+        style="@style/Widget.AppTheme.ActionBar.TextView"/>
+
+</RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/button"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="Введите ссылку для webview"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/chromeclient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Use ChromeCLient"/>
+
+            <CheckBox
+                android:id="@+id/javaScriptEnabled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="javaScript Enabled"
+                android:checked="true"/>
+
+            <CheckBox
+                android:id="@+id/javaScriptCanOpenWindowsAutomatically"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="javaScript Can Open Windows Automatically"
+                android:checked="true"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Открыть"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
+</layout>

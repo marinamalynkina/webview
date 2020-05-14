@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@+id/input_url_dest">
+
+    <fragment
+        android:id="@+id/input_url_dest"
+        android:name="com.intervale.webview.InputUrlFragment"
+        android:label="InputUrlFragment"
+        tools:layout="@layout/input_url_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/webview_dest"
+        android:name="com.intervale.webview.WevViewFragment"
+        android:label="WevViewFragment"
+        tools:layout="@layout/webview_fragment">
+
+    </fragment>
+
+</navigation>
