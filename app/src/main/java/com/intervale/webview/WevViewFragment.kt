@@ -63,10 +63,12 @@ class WevViewFragment : Fragment() {
 
         WebviewFragmentBinding.bind(view).run {
             webView.apply {
-                if (arguments?.getBoolean("chromeclient") == true) webChromeClient = WebChromeClient()
+                if (arguments?.getBoolean("chromeclient") == true)
+                    webChromeClient = MyWebChromeClient()
                 webViewClient = MyWebViewClient()
                 loadUrl(url)
                 settings.apply {
+                    domStorageEnabled = arguments?.getBoolean("domStorageEnabled") ?: true
                     builtInZoomControls = true
                     defaultZoom = WebSettings.ZoomDensity.FAR
                     javaScriptEnabled = arguments?.getBoolean("javaScriptEnabled") ?: true
@@ -97,10 +99,101 @@ class WevViewFragment : Fragment() {
     fun hideProgress() {
     }
 
+    val TAG = "WebView"
+
+    inner class MyWebChromeClient: WebChromeClient() {
+        override fun  onConsoleMessage(consoleMessage: ConsoleMessage): Boolean {
+            when(consoleMessage.messageLevel()) {
+                ConsoleMessage.MessageLevel.ERROR -> Log.e(TAG, "onConsoleMessage ${consoleMessage.message()} - ${consoleMessage.sourceId()} :${consoleMessage.lineNumber()}");
+                ConsoleMessage.MessageLevel.WARNING -> Log.w(TAG, "onConsoleMessage ${consoleMessage.message()} - ${consoleMessage.sourceId()} :${consoleMessage.lineNumber()}");
+                else -> Log.i(TAG, "${consoleMessage.messageLevel().name} onConsoleMessage ${consoleMessage.message()} - ${consoleMessage.sourceId()} :${consoleMessage.lineNumber()}");
+            }
+            return true;
+        }
+
+        override fun onConsoleMessage(message: String?, lineNumber: Int, sourceID: String?) {
+            super.onConsoleMessage(message, lineNumber, sourceID)
+            Log.i(TAG, "onConsoleMessage ${message} - ${sourceID} :${lineNumber}");
+        }
+
+        override fun onJsAlert(
+            view: WebView?,
+            url: String?,
+            message: String?,
+            result: JsResult?
+        ): Boolean {
+            Log.i(TAG, "onJsAlert ${message} :${result} :: url ${url} ");
+            return super.onJsAlert(view, url, message, result)
+        }
+
+        override fun onJsPrompt(
+            view: WebView?,
+            url: String?,
+            message: String?,
+            defaultValue: String?,
+            result: JsPromptResult?
+        ): Boolean {
+            Log.i(TAG, "onJsPrompt ${message} result:${result} defaultValue: ${defaultValue} :: url ${url} ");
+            return super.onJsPrompt(view, url, message, defaultValue, result)
+        }
+
+        override fun onPermissionRequest(request: PermissionRequest?) {
+            super.onPermissionRequest(request)
+            Log.i(TAG, "onPermissionRequest ${request.toString()}");
+        }
+
+        override fun onReceivedTouchIconUrl(view: WebView?, url: String?, precomposed: Boolean) {
+            super.onReceivedTouchIconUrl(view, url, precomposed)
+            Log.i(TAG, "onReceivedTouchIconUrl ${url}");
+        }
+
+        override fun onReceivedTitle(view: WebView?, title: String?) {
+            super.onReceivedTitle(view, title)
+            Log.i(TAG, "onReceivedTitle ${title}");
+        }
+
+        override fun onReachedMaxAppCacheSize(
+            requiredStorage: Long,
+            quota: Long,
+            quotaUpdater: WebStorage.QuotaUpdater?
+        ) {
+            super.onReachedMaxAppCacheSize(requiredStorage, quota, quotaUpdater)
+            Log.i(TAG, "onReachedMaxAppCacheSize requiredStorage: ${requiredStorage} quota: ${quota}");
+        }
+
+        override fun onProgressChanged(view: WebView?, newProgress: Int) {
+            super.onProgressChanged(view, newProgress)
+        }
+
+        override fun onJsConfirm(
+            view: WebView?,
+            url: String?,
+            message: String?,
+            result: JsResult?
+        ): Boolean {
+            Log.i(TAG, "onJsConfirm message: ${message} result: ${result} url: ${url}");
+            return super.onJsConfirm(view, url, message, result)
+
+        }
+
+        override fun onJsBeforeUnload(
+            view: WebView?,
+            url: String?,
+            message: String?,
+            result: JsResult?
+        ): Boolean {
+            Log.i(TAG, "onJsBeforeUnload message: ${message} result: ${result} url: ${url}");
+            return super.onJsBeforeUnload(view, url, message, result)
+        }
+
+        override fun onJsTimeout(): Boolean {
+            Log.i(TAG, "onJsTimeout");
+            return super.onJsTimeout()
+        }
+    }
+
     inner class MyWebViewClient(
     ) : WebViewClient() {
-
-        val TAG = "WebView"
 
         override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
             super.onPageStarted(view, url, favicon)

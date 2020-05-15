@@ -63,7 +63,8 @@
                 android:id="@+id/chromeclient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Use ChromeCLient"/>
+                android:text="Use ChromeCLient"
+                android:checked="true"/>
 
             <CheckBox
                 android:id="@+id/javaScriptEnabled"
@@ -78,6 +79,15 @@
                 android:layout_height="wrap_content"
                 android:text="javaScript Can Open Windows Automatically"
                 android:checked="true"/>
+
+            <CheckBox
+                android:id="@+id/domStorageEnabled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="domStorageEnabled - Sets whether the DOM storage API is enabled"
+                android:checked="true"/>
+
+
 
             <View
                 android:layout_width="0dp"

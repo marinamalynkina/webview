@@ -26,7 +26,8 @@ class InputUrlFragment : Fragment() {
                     "url" to edittext.text.toString(),
                     "chromeclient" to chromeclient.isChecked,
                     "javaScriptEnabled" to javaScriptEnabled.isChecked,
-                    "javaScriptCanOpenWindowsAutomatically" to javaScriptCanOpenWindowsAutomatically.isChecked
+                    "javaScriptCanOpenWindowsAutomatically" to javaScriptCanOpenWindowsAutomatically.isChecked,
+                    "domStorageEnabled" to domStorageEnabled.isChecked
                 ))
             }
         }
